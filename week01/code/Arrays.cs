@@ -8,12 +8,19 @@ public static class Arrays
     /// <returns>array of doubles that are the multiples of the supplied number</returns>
     public static double[] MultiplesOf(double number, int length)
     {
-        // TODO Problem 1 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+        // Step 1: First, I need to create a double array to hold the results with the size of 'length'.
+        // Step 2: Then, I will use a for loop to iterate from 0 up to 'length'.
+        // Step 3: Inside the loop, calculate the multiple. Since the index 'i' starts at 0, I have to multiply 'number' by (i + 1).
+        // Step 4: Save the calculated value in the current index of the array, and return the array at the end.
 
-        return []; // replace this return statement with your own
+        double[] results = new double[length];
+
+        for (int i = 0; i < length; i++)
+        {
+            results[i] = number * (i + 1);
+        }
+
+        return results;
     }
 
     /// <summary>
@@ -25,9 +32,15 @@ public static class Arrays
     /// </summary>
     public static void RotateListRight(List<int> data, int amount)
     {
-        // TODO Problem 2 Start
-        // Remember: Using comments in your program, write down your process for solving this problem
-        // step by step before you write the code. The plan should be clear enough that it could
-        // be implemented by another person.
+        // Step 1: I need to find the split point. This is the total count of the list minus the 'amount' we want to rotate.
+        // Step 2: Extract the items from that split point to the end using GetRange, and save them in a temporary list.
+        // Step 3: Remove those same items from the end of the original list so they don't duplicate.
+        // Step 4: Finally, insert the temporary list at the very beginning (index 0) of the original list.
+
+        int splitIndex = data.Count - amount;
+
+        List<int> tail = data.GetRange(splitIndex, amount);
+        data.RemoveRange(splitIndex, amount);
+        data.InsertRange(0, tail);
     }
 }
